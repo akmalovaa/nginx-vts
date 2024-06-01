@@ -31,8 +31,7 @@ jobs:
         env:
           LATEST_TAG: ${{ steps.previoustag.outputs.tag }}
         run: |
-          echo Latest tag:
-          echo $LATEST_TAG
+          echo Latest tag: $LATEST_TAG
 
       - name: Install cosign
         uses: sigstore/cosign-installer@v3.5.0
@@ -72,6 +71,8 @@ jobs:
       - name: Sign the published Docker image
         if: ${{ github.event_name != 'pull_request' }}
         env:
-          TAGS: ${{ steps.previoustag.outputs.tag }}
+          TAGS: |
+            ghcr.io/akmalovaa/nginx-vts:latest
+            ghcr.io/akmalovaa/nginx-vts:${{ steps.previoustag.outputs.tag }}
           DIGEST: ${{ steps.build-and-push.outputs.digest }}
         run: echo "${TAGS}" | xargs -I {} cosign sign --yes {}@${DIGEST}
