@@ -1,12 +1,15 @@
 # nginx-vts prometheus
 
-Auto build actual nginx-alpine + vts module container image
+Autobuild relevant nginx-alpine + vts module container image (everyday update last image)
 
-Links:
+**VTS**: Nginx virtual host traffic status module
+
+Main links:
 - docker-nginx - https://github.com/nginxinc/docker-nginx
-- ginx-module-vts - https://github.com/vozlt/nginx-module-vts
+- nginx-module-vts - https://github.com/vozlt/nginx-module-vts
 
-
+TODO:
+- add trivy check image
 
 ### Commands 
 
@@ -27,3 +30,35 @@ docker run -p 80:80 -p 9991:9991 ghcr.io/akmalovaa/nginx-vts
 ```
 
 
+### Monitoring
+
+### Prometheus format:
+
+- **Prometheus:** http://localhost:9991/metrics
+- **Web:** http://localhost:9991/vts
+
+### Prometheus job config example
+
+```YAML
+  - job_name: nginx-vts
+    scrape_interval: 15s
+    scrape_timeout: 10s
+    metrics_path: /metrics
+    scheme: http
+    static_configs:
+      - targets: ['YOUR_IP:9991']
+```
+
+[![nginx prometheus](./.github/img/nginx_prometheus.png)](./.github/img/nginx_prometheus.png)
+
+
+### Grafana dashboards example
+
+https://grafana.com/grafana/dashboards/14824-nginx-vts-stats/
+
+[![nginx grafana](./.github/img/nginx_grafana.png)](./.github/img/nginx_grafana.png)
+
+
+### Web format example screenshot from the repo [vozlt/nginx-module-vts](https://github.com/vozlt/nginx-module-vts)
+
+[![nginx vts](https://cloud.githubusercontent.com/assets/3648408/23890539/a4c0de18-08d5-11e7-9a8b-448662454854.png)](https://cloud.githubusercontent.com/assets/3648408/23890539/a4c0de18-08d5-11e7-9a8b-448662454854.png)
