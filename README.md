@@ -12,18 +12,18 @@ Links:
 
 #### pull
 ```shell
-docker pull ghcr.io/akmalovaa/nginx-vts:1.27.0
+docker pull ghcr.io/akmalovaa/nginx-vts
 ```
 
-#### or build
+#### or manual build
 ```shell
 git clone https://github.com/akmalovaa/nginx-vts.git .
-docker build . -t ghcr.io/akmalovaa/nginx-vts:1.27.0 --build-arg VERSION=1.27.0
+docker build . -t ghcr.io/akmalovaa/nginx-vts --build-arg VERSION=1.27.0
 ```
 
 #### run
 ```shell
-docker run -p 80:80 -p 9991:9991 ghcr.io/akmalovaa/nginx-vts:1.27.0
+docker run -p 80:80 -p 9991:9991 ghcr.io/akmalovaa/nginx-vts
 ```
 
 
