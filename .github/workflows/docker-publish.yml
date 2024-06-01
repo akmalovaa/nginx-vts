@@ -12,6 +12,7 @@ on:
     # branches: [ "main" ]
     # Publish semver tags as releases.
     tags: [ '*.*.*' ]
+  workflow_dispatch:
   # pull_request:
     # branches: [ "main" ]
 
