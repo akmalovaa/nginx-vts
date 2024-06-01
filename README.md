@@ -70,3 +70,10 @@ https://grafana.com/grafana/dashboards/14824-nginx-vts-stats/
 ### Web format example screenshot from the repo [vozlt/nginx-module-vts](https://github.com/vozlt/nginx-module-vts)
 
 [![nginx vts](https://cloud.githubusercontent.com/assets/3648408/23890539/a4c0de18-08d5-11e7-9a8b-448662454854.png)](https://cloud.githubusercontent.com/assets/3648408/23890539/a4c0de18-08d5-11e7-9a8b-448662454854.png)
+
+
+---
+todo:
+- auto upgarde to main nginx release version
+- auto update badges
+- save and show display trivy image scan results
