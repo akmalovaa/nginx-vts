@@ -22,3 +22,8 @@ jobs:
           echo "Tag name from github.ref_name: ${{  github.ref_name }}"
           latest_tag=$(git describe --tags $(git rev-list --tags --max-count=1))
           echo "LATEST_TAG=$latest_tag" >> $GITHUB_ENV
+      
+      - name: Get latest
+        uses: actions-ecosystem/action-get-latest-tag@v1
+        id: get-latest-tag
+        if: ${{ steps.release-label.outputs.level != null }}
