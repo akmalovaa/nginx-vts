@@ -68,6 +68,16 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@0.21.0
+        with:
+          image-ref: 'ghcr.io/akmalovaa/nginx-vts:${{ steps.previoustag.outputs.tag }}'
+          format: 'table'
+          exit-code: '1'
+          ignore-unfixed: true
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'
+
       - name: Sign the published Docker image
         if: ${{ github.event_name != 'pull_request' }}
         env:

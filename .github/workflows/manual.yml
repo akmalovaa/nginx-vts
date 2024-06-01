@@ -28,9 +28,4 @@ jobs:
           ignore-unfixed: true
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
-      
-      - name: Scan for vulnerabilities
-        uses: crazy-max/ghaction-container-scan@v3
-        with:
-          image: ghcr.io/akmalovaa/nginx-vts:${{ steps.previoustag.outputs.tag }}
-          severity_threshold: CRITICAL
+

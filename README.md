@@ -3,19 +3,21 @@
 <p align="center">
 	<img src="./.github/img/nginx.png">
 	<br><br>
+  <img src="https://img.shields.io/badge/OS-alpine-0e5980.svg?style=for-the-badge">
 	<img src="https://img.shields.io/badge/version-1.27.0-green.svg?style=for-the-badge">
+  <img src="https://img.shields.io/badge/size-49MB-blue.svg?style=for-the-badge">
 </p>
 
-Autobuild relevant nginx-alpine + vts module container image (everyday update image)
+Simple nginx-vts image updater:
+- Auto update current version nginx-alpine 
+- VTS module build 
+- Trivy scan image for vulnerabilities
 
 **VTS**: Nginx virtual host traffic status module
 
 Main links:
 - docker-nginx - https://github.com/nginxinc/docker-nginx
 - nginx-module-vts - https://github.com/vozlt/nginx-module-vts
-
-TODO:
-- add trivy check image
 
 ### Commands 
 
