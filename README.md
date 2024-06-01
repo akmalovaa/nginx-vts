@@ -1,5 +1,11 @@
 # nginx-vts prometheus
 
+<p align="center">
+	<img src="./.github/img/nginx.png">
+	<br><br>
+	<img src="https://img.shields.io/badge/version-1.27.0-green.svg?style=for-the-badge">
+</p>
+
 Autobuild relevant nginx-alpine + vts module container image (everyday update last image)
 
 **VTS**: Nginx virtual host traffic status module
