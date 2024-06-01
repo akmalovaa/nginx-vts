@@ -1,4 +1,4 @@
-name: Auto build
+name: Auto update build
 
 on:
   schedule:
