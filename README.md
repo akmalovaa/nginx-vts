@@ -6,7 +6,7 @@
 	<img src="https://img.shields.io/badge/version-1.27.0-green.svg?style=for-the-badge">
 </p>
 
-Autobuild relevant nginx-alpine + vts module container image (everyday update last image)
+Autobuild relevant nginx-alpine + vts module container image (everyday update image)
 
 **VTS**: Nginx virtual host traffic status module
 
