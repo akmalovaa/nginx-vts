@@ -9,6 +9,6 @@ jobs:
   get-latest-version:
     runs-on: ubuntu-latest
     steps:
-    - use: kyanagimoto/get-latest-version@main
+    - uses: kyanagimoto/get-latest-version@main
       with:
         repo-name: 'getsentry/sentry'
