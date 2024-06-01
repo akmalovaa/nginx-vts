@@ -64,6 +64,8 @@ docker run -p 80:80 -p 9991:9991 ghcr.io/akmalovaa/nginx-vts
 
 https://grafana.com/grafana/dashboards/14824-nginx-vts-stats/
 
+https://grafana.com/grafana/dashboards/?search=Nginx+VTS
+
 [![nginx grafana](./.github/img/nginx_grafana.png)](./.github/img/nginx_grafana.png)
 
 
