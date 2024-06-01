@@ -14,10 +14,12 @@ jobs:
           fetch-depth: 0 # Required due to the way Git works, without it this action won't be able to find any or the correct tags
       - name: 'Get Previous tag'
         id: previoustag
-        uses: "WyriHaximus/github-action-get-previous-tag@v1"
-      # - run: echo "Octokit is at version ${{ steps.previoustag }}"
+        uses: "WyriHaximus/github-action-get-previous-tag@master"
 
       - name: Print latest tag
+        shell: bash
+        env:
+          LATEST_TAG: ${{ steps.previoustag.outputs.tag }}
         run: |
           echo Latest tag:
-          echo ${{ steps.previoustag }}
+          echo $LATEST_TAG
