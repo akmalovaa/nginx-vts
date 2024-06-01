@@ -1,4 +1,4 @@
-name: latest_ver
+name: Auto build
 
 on:
   schedule:
@@ -6,8 +6,13 @@ on:
   workflow_dispatch:
 
 jobs:
-  get-latest-version:
+  auto-build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+
     steps:
       - uses: actions/checkout@v4
         with:
