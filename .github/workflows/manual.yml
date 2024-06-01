@@ -12,18 +12,15 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
         with:
-          fetch-depth: 0 
+          fetch-depth: 0
+
       - name: GitHub Tag Name example
         run: |
-          echo "Tag name from GITHUB_REF_NAME: $GITHUB_REF_NAME"
-          echo "Tag name from github.ref_name: ${{  github.ref_name }}"
           latest_tag=$(git describe --tags $(git rev-list --tags --max-count=1))
           echo "LATEST_TAG=$latest_tag" >> $GITHUB_ENV
-      
-      - name: Get latest
-        uses: actions-ecosystem/action-get-latest-tag@v1
-        id: get-latest-tag
-        if: ${{ steps.release-label.outputs.level != null }}
+
+      - name: Get previous tag name
+        id: previous_tag
+        run: echo "TAGNAME=$(git describe --abbrev=0 ${{ steps.current_tag.outputs.TAGNAME}}^)" >> $GITHUB_OUTPUT

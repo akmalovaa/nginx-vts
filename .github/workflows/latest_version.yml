@@ -15,3 +15,7 @@ jobs:
       - name: 'Get Previous tag'
         id: previoustag
         uses: "WyriHaximus/github-action-get-previous-tag@v1"
+      # - run: echo "Octokit is at version ${{ steps.previoustag }}"
+
+      - name: Print latest tag
+        run: echo ${{ steps.tag.outputs.tag }}
