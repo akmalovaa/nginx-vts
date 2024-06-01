@@ -60,9 +60,11 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          tags: ${{ steps.previoustag.outputs.tag }}
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: |
+            ghcr.io/akmalovaa/nginx-vts:latest
+            ghcr.io/akmalovaa/nginx-vts:${{ steps.previoustag.outputs.tag }}
           labels: ${{ steps.meta.outputs.labels }}
-          push: true
           # platforms: linux/amd64,linux/arm64
           cache-from: type=gha
           cache-to: type=gha,mode=max
