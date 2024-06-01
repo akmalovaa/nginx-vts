@@ -18,4 +18,6 @@ jobs:
       # - run: echo "Octokit is at version ${{ steps.previoustag }}"
 
       - name: Print latest tag
-        run: echo ${{ steps.tag.outputs.previoustag }}
+        run: |
+          echo Latest tag:
+          echo ${{ steps.previoustag }}
