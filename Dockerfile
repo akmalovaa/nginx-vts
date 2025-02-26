@@ -1,4 +1,4 @@
-ARG VERSION=1.27.0
+ARG VERSION=1.27.4
 
 FROM nginx:${VERSION}-alpine AS builder
 
