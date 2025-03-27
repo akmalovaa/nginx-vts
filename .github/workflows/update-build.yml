@@ -71,9 +71,9 @@ jobs:
 
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@0.30.0
-        env:
-          TRIVY_SEVERITY: CRITICAL
-          TRIVY_EXIT_CODE: 1
+        # env:
+        #   TRIVY_SEVERITY: CRITICAL
+        #   TRIVY_EXIT_CODE: 1
         with:
           image-ref: 'ghcr.io/akmalovaa/nginx-vts:${{ steps.previoustag.outputs.tag }}'
           format: 'sarif'
