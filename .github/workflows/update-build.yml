@@ -88,15 +88,15 @@ jobs:
         with:
           sarif_file: 'trivy-results.sarif'
 
-      - name: grype / sarif to markdown
-        if: success() || failure()
-        id: sarif-to-markdown
-        uses: 11notes/action-sarif-to-markdown@v1.2.0
-        with:
-          sarif_file: 'trivy-results.sarif'
+      # - name: grype / sarif to markdown
+      #   if: success() || failure()
+      #   id: sarif-to-markdown
+      #   uses: 11notes/action-sarif-to-markdown@v1.2.0
+      #   with:
+      #     sarif_file: 'trivy-results.sarif'
       
-      - name: grype / report / print
-        run: echo ${{ steps.sarif-to-markdow.outputs.markdown }}
+      # - name: grype / report / print
+      #   run: echo ${{ steps.sarif-to-markdow.outputs.markdown }}
 
       - name: Sign the published Docker image
         if: ${{ github.event_name != 'pull_request' }}
