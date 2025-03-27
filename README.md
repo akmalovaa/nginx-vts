@@ -1,4 +1,4 @@
-# nginx-vts prometheus
+# nginx vts for prometheus monitoring
 
 <p align="center">
 	<img src="./.github/img/nginx.png">
