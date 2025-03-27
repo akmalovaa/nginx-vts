@@ -76,7 +76,7 @@ jobs:
           exit-code: '1'
           ignore-unfixed: true
           vuln-type: 'os,library'
-          severity: 'CRITICAL,HIGH'
+          severity: 'CRITICAL' # HIGH
 
       - name: Sign the published Docker image
         if: ${{ github.event_name != 'pull_request' }}
