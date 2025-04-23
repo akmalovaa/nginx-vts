@@ -5,7 +5,7 @@
 	<br><br>
   <img src="https://img.shields.io/badge/OS-alpine-0e5980.svg?style=for-the-badge">
 	<img src="https://img.shields.io/badge/version-1.27.5-green.svg?style=for-the-badge">
-  <img src="https://img.shields.io/badge/size-49MB-blue.svg?style=for-the-badge">
+  <img src="https://img.shields.io/badge/size-50.3MB-blue.svg?style=for-the-badge">
 </p>
 
 Simple nginx-vts image updater:
