@@ -4,7 +4,7 @@
 	<img src="./.github/img/nginx.png">
 	<br><br>
   <img src="https://img.shields.io/badge/OS-alpine-0e5980.svg?style=for-the-badge">
-	<img src="https://img.shields.io/badge/version-1.27.5-green.svg?style=for-the-badge">
+	<img src="https://img.shields.io/badge/version-1.28.0-green.svg?style=for-the-badge">
   <img src="https://img.shields.io/badge/size-50.3MB-blue.svg?style=for-the-badge">
 </p>
 
@@ -29,7 +29,7 @@ docker pull ghcr.io/akmalovaa/nginx-vts
 #### or manual build
 ```shell
 git clone https://github.com/akmalovaa/nginx-vts.git .
-docker build . -t ghcr.io/akmalovaa/nginx-vts --build-arg VERSION=1.27.0
+docker build . -t ghcr.io/akmalovaa/nginx-vts --build-arg VERSION=1.28.0
 ```
 
 #### run

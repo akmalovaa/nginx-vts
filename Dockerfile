@@ -1,8 +1,8 @@
-ARG VERSION=1.27.5
+ARG VERSION=1.28.0
 
 FROM nginx:${VERSION}-alpine AS builder
 
-ARG VERSION=1.27.5
+ARG VERSION=1.28.0
 ENV NGINX_VERSION=${VERSION}
 
 RUN apk add --update --no-cache --virtual .build-deps \
