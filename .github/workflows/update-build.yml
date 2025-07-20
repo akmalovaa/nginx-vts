@@ -1,9 +1,9 @@
 name: Auto update build
 
-on:
-  schedule:
-    - cron: "30 0 * * *" # or '0 0 * * 0' # At 00:00 on Sunday
-  workflow_dispatch:
+# on:
+#   schedule:
+#     - cron: "30 0 * * *" # or '0 0 * * 0' # At 00:00 on Sunday
+#   workflow_dispatch:
 
 env:
   REGISTRY: ghcr.io
