@@ -9,9 +9,9 @@ on:
   schedule:
     - cron: '0 0 * * 0' # At 00:00 on Sunday
   push:
-    # branches: [ "main" ]
-    # Publish semver tags as releases.
     tags: [ '*.*.*' ]
+  release:
+    types: [ published ]
   workflow_dispatch:
   # pull_request:
     # branches: [ "main" ]

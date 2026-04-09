@@ -20,7 +20,7 @@ jobs:
 
 
       - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@0.30.0
+        uses: aquasecurity/trivy-action@v0.35.0
         with:
           image-ref: 'ghcr.io/akmalovaa/nginx-vts:${{ steps.previoustag.outputs.tag }}'
           format: 'table'
