@@ -10,6 +10,9 @@
 
 Nginx Alpine image with [nginx-module-vts](https://github.com/vozlt/nginx-module-vts) compiled as a dynamic module. Exposes Prometheus metrics and HTML dashboard out of the box.
 
+> [!TIP]
+> Consider [Angie](https://angie.software/angie/) — a modern fork of nginx with a built-in Prometheus metrics exporter, no third-party modules required.
+
 ## Features
 
 - Multi-arch build: `linux/amd64`, `linux/arm64`
@@ -91,8 +94,6 @@ Recommended dashboards:
 
 </details>
 
-> [!TIP]
-> Consider [Angie](https://angie.software/angie/) — a modern fork of nginx with a built-in Prometheus metrics exporter, no third-party modules required.
 
 ## Links
 
