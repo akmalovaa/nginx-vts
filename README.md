@@ -1,81 +1,100 @@
-# nginx vts for prometheus monitoring
+# nginx-vts
 
 <p align="center">
-	<img src="./.github/img/nginx.png">
-	<br><br>
-  <img src="https://img.shields.io/badge/OS-alpine-0e5980.svg?style=for-the-badge">
-	<img src="https://img.shields.io/badge/version-1.28.0-green.svg?style=for-the-badge">
-  <img src="https://img.shields.io/badge/size-50.3MB-blue.svg?style=for-the-badge">
+  <img src="./.github/img/nginx.png" width="200">
+  <br><br>
+  <img src="https://img.shields.io/badge/nginx-1.29.8-green.svg?style=for-the-badge&logo=nginx">
+  <img src="https://img.shields.io/badge/VTS-v0.2.5-blue.svg?style=for-the-badge">
+  <img src="https://img.shields.io/badge/alpine-latest-0e5980.svg?style=for-the-badge&logo=alpine-linux">
 </p>
 
-Simple nginx-vts image updater:
-- Auto update current version nginx-alpine 
-- VTS module build 
-- Trivy scan image for vulnerabilities
+Nginx Alpine image with [nginx-module-vts](https://github.com/vozlt/nginx-module-vts) compiled as a dynamic module. Exposes Prometheus metrics and HTML dashboard out of the box.
 
-**VTS**: Nginx virtual host traffic status module
+## Features
 
-Main links:
-- docker-nginx - https://github.com/nginxinc/docker-nginx
-- nginx-module-vts - https://github.com/vozlt/nginx-module-vts
+- Multi-arch build: `linux/amd64`, `linux/arm64`
+- Prometheus metrics at `/metrics` (port 9991)
+- VTS HTML dashboard at `/vts` (port 9991)
+- Metrics grouped by HTTP status code and URL pattern
+- Metrics endpoint restricted to private networks
+- Custom configs via `/etc/nginx/conf.d/*.conf`
+- Image signed with [cosign](https://github.com/sigstore/cosign)
 
-### Commands 
+## Quick start
 
-#### pull
-```shell
-docker pull ghcr.io/akmalovaa/nginx-vts
-```
-
-#### or manual build
-```shell
-git clone https://github.com/akmalovaa/nginx-vts.git .
-docker build . -t ghcr.io/akmalovaa/nginx-vts --build-arg VERSION=1.28.0
-```
-
-#### run
 ```shell
 docker run -p 80:80 -p 9991:9991 ghcr.io/akmalovaa/nginx-vts
 ```
 
+- http://localhost:9991/metrics — Prometheus format
+- http://localhost:9991/vts — HTML dashboard
 
-### Monitoring
+## Build
 
-### Prometheus format:
-
-- **Prometheus:** http://localhost:9991/metrics
-- **Web:** http://localhost:9991/vts
-
-### Prometheus job config example
-
-```YAML
-  - job_name: nginx-vts
-    scrape_interval: 15s
-    scrape_timeout: 10s
-    metrics_path: /metrics
-    scheme: http
-    static_configs:
-      - targets: ['YOUR_IP:9991']
+```shell
+docker build . -t ghcr.io/akmalovaa/nginx-vts
 ```
 
-[![nginx prometheus](./.github/img/nginx_prometheus.png)](./.github/img/nginx_prometheus.png)
+Override versions via build args:
 
+```shell
+docker build . -t ghcr.io/akmalovaa/nginx-vts \
+  --build-arg VERSION=1.29.8 \
+  --build-arg VTS_VERSION=v0.2.5
+```
 
-### Grafana dashboards example
+## Custom nginx config
 
-https://grafana.com/grafana/dashboards/14824-nginx-vts-stats/
+Mount your configs into the standard directory:
 
-https://grafana.com/grafana/dashboards/?search=Nginx+VTS
+```shell
+docker run -p 80:80 -p 9991:9991 \
+  -v ./my-site.conf:/etc/nginx/conf.d/my-site.conf:ro \
+  ghcr.io/akmalovaa/nginx-vts
+```
 
-[![nginx grafana](./.github/img/nginx_grafana.png)](./.github/img/nginx_grafana.png)
+Or replace `nginx.conf` entirely:
 
+```shell
+docker run -p 80:80 -p 9991:9991 \
+  -v ./nginx.conf:/etc/nginx/nginx.conf:ro \
+  ghcr.io/akmalovaa/nginx-vts
+```
 
-### Web format example screenshot from the repo [vozlt/nginx-module-vts](https://github.com/vozlt/nginx-module-vts)
+## Prometheus
 
-[![nginx vts](https://cloud.githubusercontent.com/assets/3648408/23890539/a4c0de18-08d5-11e7-9a8b-448662454854.png)](https://cloud.githubusercontent.com/assets/3648408/23890539/a4c0de18-08d5-11e7-9a8b-448662454854.png)
+Add a scrape job to your `prometheus.yml`:
 
+```yaml
+- job_name: nginx-vts
+  scrape_interval: 15s
+  metrics_path: /metrics
+  static_configs:
+    - targets: ['YOUR_IP:9991']
+```
 
----
-todo:
-- auto upgarde to main nginx release version
-- auto update badges
-- save and show display trivy image scan results
+> **Note:** The metrics endpoint only accepts connections from private networks (`10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`, `127.0.0.0/8`). Adjust `allow`/`deny` rules in `nginx.conf` if needed.
+
+## Grafana
+
+Recommended dashboards:
+
+- [Nginx VTS Stats](https://grafana.com/grafana/dashboards/14824-nginx-vts-stats/)
+- [Search all Nginx VTS dashboards](https://grafana.com/grafana/dashboards/?search=Nginx+VTS)
+
+<details>
+<summary>Screenshots</summary>
+
+[![Prometheus](./.github/img/nginx_prometheus.png)](./.github/img/nginx_prometheus.png)
+
+[![Grafana](./.github/img/nginx_grafana.png)](./.github/img/nginx_grafana.png)
+
+</details>
+
+> [!TIP]
+> Consider [Angie](https://angie.software/angie/) — a modern fork of nginx with a built-in Prometheus metrics exporter, no third-party modules required.
+
+## Links
+
+- [nginxinc/docker-nginx](https://github.com/nginxinc/docker-nginx) — official nginx Docker image
+- [vozlt/nginx-module-vts](https://github.com/vozlt/nginx-module-vts) — VTS module
