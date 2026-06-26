@@ -3,7 +3,7 @@
 <p align="center">
   <img src="./.github/img/nginx.png" width="200">
   <br><br>
-  <img src="https://img.shields.io/badge/nginx-1.29.8-green.svg?style=for-the-badge&logo=nginx">
+  <img src="https://img.shields.io/badge/nginx-1.31.2-green.svg?style=for-the-badge&logo=nginx">
   <img src="https://img.shields.io/badge/VTS-v0.2.5-blue.svg?style=for-the-badge">
   <img src="https://img.shields.io/badge/alpine-latest-0e5980.svg?style=for-the-badge&logo=alpine-linux">
 </p>
@@ -42,7 +42,7 @@ Override versions via build args:
 
 ```shell
 docker build . -t ghcr.io/akmalovaa/nginx-vts \
-  --build-arg VERSION=1.29.8 \
+  --build-arg VERSION=1.31.2 \
   --build-arg VTS_VERSION=v0.2.5
 ```
 
